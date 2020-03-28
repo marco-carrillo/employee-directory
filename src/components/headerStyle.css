@@ -1,0 +1,10 @@
+.maintitle{
+    font-family: 'Kranky', cursive;
+    font-weight: bolder;
+    align-self: center;
+}
+
+.jumbotron {
+    color: #fff;
+    background-color:#0084b4;
+}
