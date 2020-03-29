@@ -18,7 +18,7 @@ const SectionContainer = ({
 }) => {
   const classes = classNames(
     'section',
-    !noBottom && 'mb-5',
+    !noBottom && 'mb-2 mt-0 pt-0',
     !noBorder ? 'border p-3' : 'px-0',
     dark && 'grey darken-3',
     flexCenter && 'd-flex justify-content-center align-items-center',

@@ -10,6 +10,8 @@ import {
 } from 'mdbreact';
 import SectionContainer from './sectionContainer';
 import NbrRecords from './nbrRecords';
+import Gender from './gender';
+import Nationality from './nationality';
 
 class UserDirectory extends React.Component {
   state = {
@@ -29,8 +31,8 @@ class UserDirectory extends React.Component {
   //********************************************************************************************/
   //  This function calls the API that returns random names to be included in the dataTable    */
   //********************************************************************************************/
-  getsRandomEmployees = (records) => {
-    fetch(`https://randomuser.me/api/?results=${records}`)
+  getsRandomEmployees = (records,gender,nat) => {
+    fetch(`https://randomuser.me/api/?results=${records}&gender=${gender}&nat=${nat}`)
       .then(res => res.json())
       .then(json => {
         let rawdata = json.results;
@@ -114,9 +116,24 @@ class UserDirectory extends React.Component {
   //********************************************************************/
   handleRecordsChange = (changeEvent) =>{
     this.setState({...this.state,records: changeEvent.target.value});
-    this.getsRandomEmployees(changeEvent.target.value);  // Calling the API to refresh data
+    this.getsRandomEmployees(changeEvent.target.value,this.state.gender,this.state.nationality);  // Calling the API to refresh data
   }
 
+  //*****************************************************************************************/
+  //  This function is called whenever the user selects to retrieve  users based on gender  */
+  //*****************************************************************************************/
+  handleGenderChange = (changeEvent) =>{
+    this.setState({...this.state,gender: changeEvent.target.value});
+    this.getsRandomEmployees(this.state.records,changeEvent.target.value,this.state.nationality);  // Calling the API to refresh data
+  }
+
+  //**********************************************************************************************/
+  //  This function is called whenever the user selects to retrieve  users based on nationality  */
+  //**********************************************************************************************/
+  handleNationalityChange = (changeEvent) =>{
+    this.setState({...this.state,nationality: changeEvent.target.value});
+    this.getsRandomEmployees(this.state.records,this.state.gender,changeEvent.target.value);  // Calling the API to refresh data
+  }
 
   //********************************************************************/
   //  Rendering the datatable with all of the information from users
@@ -125,7 +142,11 @@ class UserDirectory extends React.Component {
     const { data } = this.state;
     return (
       <MDBContainer className='mt-3'>
-            <NbrRecords whichOne={this.state.records} onChange={this.handleRecordsChange}/>
+            <SectionContainer>
+              <NbrRecords whichOne={this.state.records} onChange={this.handleRecordsChange}/>
+              <Gender whichOne={this.state.gender} onChange={this.handleGenderChange}/>
+              <Nationality whichOne={this.state.nationality} onChange={this.handleNationalityChange}/>
+            </SectionContainer>
             <SectionContainer
               noBorder
             >

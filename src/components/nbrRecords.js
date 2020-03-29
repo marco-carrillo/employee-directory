@@ -2,7 +2,7 @@ import React from 'react';
 
 function NbrRecords(props){
     return(
-        <form className="text-center"> 
+        <form className="text-center my-0 py-0"> 
             <div className="form-check form-check-inline">
                 <label>
                 <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="10" checked={props.whichOne==="10"} onChange={props.onChange}/>
