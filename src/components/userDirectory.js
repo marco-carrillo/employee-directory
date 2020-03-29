@@ -9,17 +9,28 @@ import {
   MDBBadge
 } from 'mdbreact';
 import SectionContainer from './sectionContainer';
+import NbrRecords from './nbrRecords';
 
 class UserDirectory extends React.Component {
   state = {
-    data: {}
+    data: {},
+    records:"10",
+    gender: "both",
+    nationality: "all"
   };
 
   //*********************************************************/
   //  will wait until component loads before fetching data   /
   //*********************************************************/
   componentDidMount() {
-    fetch("https://randomuser.me/api/?results=100")
+       this.getsRandomEmployees(10);  // Calls to fetch 100 users from API
+  }
+
+  //********************************************************************************************/
+  //  This function calls the API that returns random names to be included in the dataTable    */
+  //********************************************************************************************/
+  getsRandomEmployees = (records) => {
+    fetch(`https://randomuser.me/api/?results=${records}`)
       .then(res => res.json())
       .then(json => {
         let rawdata = json.results;
@@ -98,12 +109,23 @@ class UserDirectory extends React.Component {
   }
 
   //********************************************************************/
+  //  This function is called whenever the user selects to retrieve    */
+  //  more employees, either 100, 500, or 1,000 employees              */
+  //********************************************************************/
+  handleRecordsChange = (changeEvent) =>{
+    this.setState({...this.state,records: changeEvent.target.value});
+    this.getsRandomEmployees(changeEvent.target.value);  // Calling the API to refresh data
+  }
+
+
+  //********************************************************************/
   //  Rendering the datatable with all of the information from users
   //********************************************************************/
   render() {
     const { data } = this.state;
     return (
       <MDBContainer className='mt-3'>
+            <NbrRecords whichOne={this.state.records} onChange={this.handleRecordsChange}/>
             <SectionContainer
               noBorder
             >
