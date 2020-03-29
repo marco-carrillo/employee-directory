@@ -17,6 +17,8 @@ The API is called by using a simple fetch call such as  fetch("https://randomuse
 
 The response is in JSON format.  We found this API to be simple for our purposes.  Given it is free, latency is variable but generally tolerable for this particular application.
 
+UPDATE:  We originally had allowed the user to request up to 5K results.  Given the many combinations of gender and nationality, we realized the server throttled us down and rejected many requests.  Therefore, we are only allowing to fetch up to 400 results at a time at this time.
+
 ##  Material Design Bootstrap datatable
 
 As in our prior group projects, we have leveraged the versatility of dataTables from both Material Design Bootrstrap and CDN tables.  Material Design Bootrstrap was selected this time around since they have a solution for React.  We have, therefore chosen to use their implementation to present the results fetched from the randomuser API.

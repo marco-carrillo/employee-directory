@@ -19,22 +19,22 @@ function NbrRecords(props){
  
             <div className="form-check form-check-inline">
                 <label>
-                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="500" checked={props.whichOne==="500"}  onChange={props.onChange}/>
-                    500 users
+                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="200" checked={props.whichOne==="200"}  onChange={props.onChange}/>
+                    200 users
                 </label>
             </div>
 
             <div className="form-check form-check-inline">
                 <label>
-                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="1000" checked={props.whichOne==="1000"}  onChange={props.onChange}/>
-                    1,000 users
+                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="300" checked={props.whichOne==="300"}  onChange={props.onChange}/>
+                    300 users
                 </label>
             </div>
 
             <div className="form-check form-check-inline">
                 <label>
-                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="5000" checked={props.whichOne==="5000"}  onChange={props.onChange}/>
-                    5,000 users
+                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="400" checked={props.whichOne==="400"}  onChange={props.onChange}/>
+                    400 users
                 </label>
             </div>
         </form>

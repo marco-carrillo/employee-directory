@@ -35,6 +35,7 @@ class UserDirectory extends React.Component {
     fetch(`https://randomuser.me/api/?results=${records}&gender=${gender}&nat=${nat}`)
       .then(res => res.json())
       .then(json => {
+
         let rawdata = json.results;
 
         //****************************************************************************************/
