@@ -15,6 +15,9 @@ class UserDirectory extends React.Component {
     data: {}
   };
 
+  //*********************************************************/
+  //  will wait until component loads before fetching data   /
+  //*********************************************************/
   componentDidMount() {
     fetch("https://randomuser.me/api/?results=100")
       .then(res => res.json())
@@ -70,8 +73,6 @@ class UserDirectory extends React.Component {
           }
         ];
 
-        console.log(rawdata);
-        console.log(columns);
         let rows=[];
         let data=[];
         
@@ -83,14 +84,15 @@ class UserDirectory extends React.Component {
           phone: row.phone,
           cell: row.cell,
           office: row.nat
-      }));
-      console.log(rows);
+        }));
 
+        //******************************************/
+        // Data structure required by MDBootstrap  */
+        //******************************************/
         data = {
           columns,
           rows
         };
-        console.log(data);
         this.setState({ data });
       });
   }

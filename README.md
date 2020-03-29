@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Purpose of the application
 
-## Available Scripts
+We have been tasked with creating a REACT application that shows a list of employee information.  The application will initially list a default list of 100 users randomly selected.  The user, will then have the opportunity to perform the following actions:
 
-In the project directory, you can run:
+* Sort the list either asscending or descending based on any of the fields
+* Filter or search (same end-result) by entering a string or partial string on the search box.  The application will search all fields so the application will return all rows in which any field contains the string entered by the user
 
-### `npm start`
+Overall, we used www.randomuser.me as the random user data generator.  We also used Material Design Bootstrap datatable to render the information.  We used older generation functionality such as Bootrstap and Google fonts.  Finally, wrapped all of the logic using Facebook's react library to build the overall application, as required by the assignment.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Next, we will discuss the data available, the technology/plugins used, and some potential improvements, should time had allowed.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## User Data
 
-### `npm test`
+Data is provided by the website https://randomuser.me/, which is a free, open-source API for generating random user data.  None of the information is real, even if it looks so.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The API is called by using a simple fetch call such as  fetch("https://randomuser.me/api/").  The API can be configured to return the following specific request
+*  Number of records up to a maximum of 5,000 requests
+*  Gender of the records
+*  Nationalities
+*  Making of specific data responses
 
-### `npm run build`
+The response is in JSON format.  We found this API to be simple for our purposes.  Given it is free, latency is variable but generally tolerable for this particular application.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##  Material Design Bootstrap datatable
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+As in our prior group projects, we have leveraged the versatility of dataTables from both Material Design Bootrstrap and CDN tables.  Material Design Bootrstrap was selected this time around since they have a solution for React.  We have, therefore chosen to use their implementation to present the results fetched from the randomuser API.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The table presents a total of 10 users at the time.  This setting can be changed to include up to 100 records.  The table allows to paginate to access the records not visible in the current screen.  The table allows to also sort by any of the columns either ascending or descending.  Finally, the table provides a search box which acts as a filter that shows only those records with data that matches the search box text entered at any of its fields.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##  Deployment to Heroku
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This application has been deployed to Heroku at www.heroku.com
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future enhancements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The most significant changes could be as follows
 
-## Learn More
+* Allows a record to be selected and then a pop-up screen shows with more detailed information.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Allows the user to select the number of records returned.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Allows the user to selecte nationality, gender, and which data fields need to be shown on the table.
 
-### Code Splitting
+##  Overall application demonstration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![GIF of input](./employee_directory.gif)
