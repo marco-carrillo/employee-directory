@@ -8,7 +8,7 @@ import "./headerStyle.css";
 
 function Header() {
     return(
-        <div className="jumbotron jumbotron-fluid toppage py-3">
+        <div className="jumbotron jumbotron-fluid toppage py-2">
         <div className="container text-center">
             <h1 className="maintitle">Employee Directory</h1>
             <p className="lead">Random list of users (limited to 75).  Filterable (enter string below) </p>

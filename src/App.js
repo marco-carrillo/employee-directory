@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/header";
-import UserList from "./components/userlist";
 import UserDirectory from "./components/userDirectory";
+
 
 
 function App() {
